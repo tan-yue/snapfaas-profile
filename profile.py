@@ -21,9 +21,9 @@ request = pc.makeRequestRSpec()
 # Node node
 node = request.RawPC('node')
 node.disk_image = 'urn:publicid:IDN+clemson.cloudlab.us+image+praxis-PG0:firecracker'
-node.hardware_type = 'c220g5'
-bs = node.Blockstore("bs", "/mydata")
-bs.size = "50GB"
+node.hardware_type = 'c220g2'
+
+node.addService(pg.Execute(shell="bash", command="/local/repository/setup.sh"))
 
 # Print the generated rspec
 pc.printRequestRSpec(request)
